@@ -14,6 +14,24 @@ namespace LS.OnlineCourse.API.Controllers
             _courseCategoryService = courseCategoryService;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var category = await _courseCategoryService.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return Ok(category);
+        }
 
+        [HttpGet("catagories")]
+        public async Task<IActionResult> GetAllCourseCategories()
+        {
+            var categories = await _courseCategoryService.GetCourseCategoriesAsync();
+            return Ok(categories);
+        }
+
+        
     }
 }

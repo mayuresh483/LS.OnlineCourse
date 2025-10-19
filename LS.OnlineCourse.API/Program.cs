@@ -12,11 +12,14 @@ namespace LS.OnlineCourse.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var configuration = builder.Configuration;  
+            var configuration = builder.Configuration;
 
             builder.Services.AddDbContext<Data.Entities.OnlineCourseDbContext>(options =>
+            {
                 options.UseSqlServer(configuration.GetConnectionString("DbContext"),
-                provideroptions=> provideroptions.EnableRetryOnFailure()));
+                provideroptions => provideroptions.EnableRetryOnFailure());
+               // .EnableSensitiveDataLogging(true);
+            });
 
             // Add services to the container.
 
@@ -27,6 +30,8 @@ namespace LS.OnlineCourse.API
 
             builder.Services.AddScoped<ICourseCategoryRepository, CourseCategoryRepository>();
             builder.Services.AddScoped<ICourseCategoryService, CourseCategoryService>();
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
 
             var app = builder.Build();
 

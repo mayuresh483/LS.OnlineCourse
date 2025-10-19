@@ -19,7 +19,8 @@ namespace LS.OnlineCourse.Service
         public async Task<CourseCategoryModel?> GetByIdAsync(int id)
         {
             var data = await _courseCategoryRepository.GetByIdAsync(id);
-            return new CourseCategoryModel
+
+            return data == null ? null : new CourseCategoryModel
             {
                 CategoryId = data.CategoryId,
                 CategoryName = data.CategoryName,
