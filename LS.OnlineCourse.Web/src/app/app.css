@@ -1,0 +1,5 @@
+html, body, app-root, .route-container {
+    height: 100%;
+    margin: 0;
+    overflow-y: auto; /* or `scroll` to force the scrollbar */
+  }

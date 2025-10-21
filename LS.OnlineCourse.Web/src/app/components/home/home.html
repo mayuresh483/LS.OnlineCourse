@@ -1,31 +1,34 @@
-<carousel>
-    <slide>
-        <img src="../../../assets/images/4.jpg" alt="first slide" style="display: block; width: 100%;">
-        <div class="carousel-caption d-none d-md-block">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </div>
-    </slide>
-    <slide>
-        <img src="../../../assets/images/5.jpg" alt="second slide" style="display: block; width: 100%;">
-        <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </slide>
-    <slide>
-        <img src="../../../assets/images/6.jpg" alt="third slide" style="display: block; width: 100%;">
-        <div class="carousel-caption d-none d-md-block">
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-    </slide>
-</carousel>
-<div class="trusted-section">
-    <h3>Trusted by over 4700+ individuals from YouTube and millions of learners around the world</h3>
+<div class="container home-content">
+    <carousel>
+        <slide>
+            <img src="../../../assets/images/4.jpg" alt="first slide" style="display: block; width: 100%;">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </slide>
+        <slide>
+            <img src="../../../assets/images/5.jpg" alt="second slide" style="display: block; width: 100%;">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </slide>
+        <slide>
+            <img src="../../../assets/images/6.jpg" alt="third slide" style="display: block; width: 100%;">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </slide>
+    </carousel>
+    <div class="trusted-section">
+        <h3>Trusted by over 4700+ individuals from YouTube and millions of learners around the world</h3>
+    </div>
+    <!-- <div class="cta-container">
+        <button class="cta-btn">Explore Courses</button>
+    </div>  -->
+    <app-category [viewType]="'tabs'"></app-category>
+    <app-plans-and-pricing></app-plans-and-pricing>
+    <!-- <app-browse-course></app-browse-course> -->
 </div>
-<div class="cta-container">
-    <button class="cta-btn">Explore Courses</button>
-</div> 
-
-<app-plans-and-pricing></app-plans-and-pricing>
