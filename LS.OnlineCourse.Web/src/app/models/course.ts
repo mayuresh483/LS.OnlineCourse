@@ -43,7 +43,7 @@ export interface SessionDetail {
   videoOrder: number;
 }
 
-export interface CourseDetails {
+export interface CourseDetail {
   courseId: number;
   title: string;
   description: string;

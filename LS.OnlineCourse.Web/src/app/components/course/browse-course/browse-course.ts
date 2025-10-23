@@ -2,10 +2,12 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Course } from '../../../models/course';
 import { MOCK_COURSES } from '../../../mock-data/mock-courses';
 import { CommonModule } from '@angular/common';
+import { CourseService } from '../../../services/course.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-browse-course',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './browse-course.html',
   styleUrl: './browse-course.css'
 })
@@ -13,7 +15,7 @@ export class BrowseCourse implements OnInit, OnChanges{
   courses: Course[] = [];
   @Input() categoryId!: number;
 
-  constructor() {}
+  constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
     this.processCourses();
@@ -28,7 +30,10 @@ export class BrowseCourse implements OnInit, OnChanges{
   }
 
   getCoursesByCategory(categoryId: number) {
-    this.courses = MOCK_COURSES.filter(c => c.categoryId === categoryId);
+    this.courseService.getCoursesByCategoryId(categoryId).subscribe((data) => {
+      this.courses = data;
+    });
+    // this.courses = MOCK_COURSES.filter(c => c.categoryId === categoryId);
   }
 
   formatPrice(price: number): string {

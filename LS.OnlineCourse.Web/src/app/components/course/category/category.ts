@@ -4,6 +4,7 @@ import { MOCK_CATEGORIES } from '../../../mock-data/mock-categories';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {  RouterModule } from '@angular/router';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -15,7 +16,13 @@ export class Category {
   @Input() categories: CourseCategory[]= [];
   @Input() viewType: 'list' | 'tabs' = 'list';
 
-  constructor() {
-    this.categories = MOCK_CATEGORIES;
+  constructor(private categoryService: CategoryService) {
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.categoryService.getCategories().subscribe((data) => {
+      this.categories = data;
+    });
   }
 }

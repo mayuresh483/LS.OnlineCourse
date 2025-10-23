@@ -25,7 +25,7 @@ namespace LS.OnlineCourse.API.Controllers
             return Ok(category);
         }
 
-        [HttpGet("catagories")]
+        [HttpGet]
         public async Task<IActionResult> GetAllCourseCategories()
         {
             var categories = await _courseCategoryService.GetCourseCategoriesAsync();

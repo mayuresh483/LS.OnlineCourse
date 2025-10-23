@@ -33,6 +33,17 @@ namespace LS.OnlineCourse.API
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<ICourseService, CourseService>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,7 +56,7 @@ namespace LS.OnlineCourse.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseCors("default");
 
             app.MapControllers();
 
