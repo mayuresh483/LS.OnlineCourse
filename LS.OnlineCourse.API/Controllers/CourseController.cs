@@ -1,5 +1,6 @@
 ﻿using LS.OnlineCourse.Core.Model;
 using LS.OnlineCourse.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace LS.OnlineCourse.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CourseController : ControllerBase
     {
         private readonly ICourseService _courseService;
@@ -17,6 +19,7 @@ namespace LS.OnlineCourse.API.Controllers
 
         // Get api/course
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<CourseModel>>> GetAllCourse()
         {
             var categories = await _courseService.GetAllCourseAsync();
@@ -25,6 +28,7 @@ namespace LS.OnlineCourse.API.Controllers
 
         // Get api/course/category/{categoryId}
         [HttpGet("Category/{categoryId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<CourseModel>>> GetAllCourseByCategoryAsync([FromRoute] int categoryId)
         {
             var category = await _courseService.GetAllCourseAsync(categoryId);
@@ -33,6 +37,7 @@ namespace LS.OnlineCourse.API.Controllers
 
         // Get api/course/detail/{courseId}
         [HttpGet("Detail/{courseId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<CourseDetailModel>> GetCourseDetail(int courseId)
         {
             var courseDetail = await _courseService.GetCourseByIdAsync(courseId);

@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../../services/course.service';
-import { Course, CourseDetail } from '../../../models/course';
+import { Course, CourseDetail, InstructorModel } from '../../../models/course';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-details',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './course-details.html',
   styleUrl: './course-details.css'
 })
 export class CourseDetails implements OnInit{
   courseId!: number;
   courseDetails: CourseDetail | null = null;
-
+  videoUrl: string = '';
+  instructorInfo: InstructorModel | null = null;  
+  isLoggedIn: boolean = false;
+  // noReviews: string = 'No reviews available for this course.';
+  
   constructor(private route: ActivatedRoute, private courseService: CourseService) {}
 
   ngOnInit(): void {
@@ -24,8 +29,8 @@ export class CourseDetails implements OnInit{
 
   getCourseById() {
     this.courseService.getCourseDetails(this.courseId).subscribe((data) => {
-      // debugger;
-      this.courseDetails = data;
+      debugger;
+      this.courseDetails = data;;
     });
   }
 
